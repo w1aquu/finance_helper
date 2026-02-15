@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Финансовый консультант студента</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 Интеллектуальный финансовый консультант</h1>
+        
+        <!-- Регистрация -->
+        <div id="register-section" class="card">
+            <h2>Регистрация</h2>
+            <input type="text" id="name" placeholder="Имя" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="number" id="income" placeholder="Ежемесячный доход (руб)">
+            <input type="text" id="goal" placeholder="Финансовая цель">
+            <button onclick="register()">Зарегистрироваться</button>
+        </div>
+        
+        <!-- Основной интерфейс (скрыт до регистрации) -->
+        <div id="main-section" style="display: none;">
+            <!-- Добавление расхода -->
+            <div class="card">
+                <h2>➕ Добавить расход</h2>
+                <select id="category">
+                    <option value="еда">🍔 Еда</option>
+                    <option value="транспорт">🚌 Транспорт</option>
+                    <option value="хобби">🎨 Хобби</option>
+                    <option value="уход">💇 Уход за собой</option>
+                    <option value="здоровье">💊 Здоровье</option>
+                    <option value="жилье">🏠 Жилье</option>
+                    <option value="развлечения">🎮 Развлечения</option>
+                    <option value="подписки">📺 Подписки</option>
+                    <option value="учеба">📚 Учеба</option>
+                    <option value="путешествия">✈️ Путешествия</option>
+                </select>
+                <input type="number" id="amount" placeholder="Сумма (руб)" required>
+                <button onclick="addExpense()">Сохранить</button>
+            </div>
+            
+            <!-- Статистика и КФГ -->
+            <div class="card">
+                <h2>📊 Ваша статистика</h2>
+                <div class="stats-grid">
+                    <div>Доход: <span id="display-income">0</span> руб</div>
+                    <div>Цель: <span id="display-goal"></span></div>
+                    <div class="kfg-meter">
+                        КФГ: <span id="kfg-value">0%</span>
+                        <div class="progress-bar">
+                            <div id="kfg-progress" style="width:0%"></div>
+                        </div>
+                    </div>
+                </div>
+                <canvas id="expenseChart"></canvas>
+            </div>
+            
+            <!-- Чат-бот -->
+            <div class="card">
+                <h2>🤖 Финансовый советник (DeepSeek)</h2>
+                <div id="chat-messages" class="chat-box"></div>
+                <div class="chat-input">
+                    <input type="text" id="chat-input" placeholder="Спросите совет по экономии...">
+                    <button onclick="sendChat()">Отправить</button>
+                </div>
+            </div>
+            
+            <!-- Друзья -->
+            <div class="card">
+                <h2>👥 Друзья</h2>
+                <input type="email" id="friend-email" placeholder="Email друга">
+                <button onclick="addFriend()">Добавить друга</button>
+                <div id="friends-list"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
